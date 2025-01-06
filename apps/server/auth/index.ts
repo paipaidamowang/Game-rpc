@@ -10,7 +10,7 @@ import {createHash} from "crypto";
 import { v4 as uuidv4 } from 'uuid';
 
 const cache = new Map()
-// 连接数据库
+// 简单的连接数据库
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
