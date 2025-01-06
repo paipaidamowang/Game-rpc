@@ -15,8 +15,22 @@ export class LoginManager extends Component {
 
     // 组件加载时自动执行
     onLoad() {
-        this.account = this.node.getChildByName("Account").getComponent(EditBox);
-        this.password = this.node.getChildByName("Password").getComponent(EditBox);
+        console.log("当前节点:", this.node.name);  // 确认是 Canvas
+        console.log("子节点列表:", this.node.children.map(child => child.name));  // 查看所有子节点
+
+        const accountNode = this.node.getChildByName("Account");
+        console.log("Account 节点:", accountNode?.name);  // 检查是否找到 Account
+
+        const passwordNode = this.node.getChildByName("Password");
+        console.log("Password 节点:", passwordNode?.name);  // 检查是否找到 Password
+
+        if (!accountNode || !passwordNode) {
+            console.error("找不到输入框节点");
+            return;
+        }
+
+        this.account = accountNode.getComponent(EditBox);
+        this.password = passwordNode.getComponent(EditBox);
     }
 
      // 注册方法
